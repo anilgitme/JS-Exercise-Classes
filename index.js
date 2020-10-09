@@ -9,16 +9,16 @@
 
 // EXAMPLE SOLUTION CODE:
 class Airplane {
-  constructor(name) {
-    this.name = name;
-    this.isFlying = false;
-  }
-  takeOff() {
-    this.isFlying = true;
-  }
-  land() {
-    this.isFlying = false;
-  }
+    constructor(name) {
+        this.name = name;
+        this.isFlying = false;
+    }
+    takeOff() {
+        this.isFlying = true;
+    }
+    land() {
+        this.isFlying = false;
+    }
 }
 
 /*
@@ -41,8 +41,25 @@ class Airplane {
 */
 
 class Person {
-
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        this.stomach = [];
+    }
+    eat(someFood) {
+        if (this.stomach.length < 10) {
+            this.stomach.push(someFood);
+        }
+    }
+    poop() {
+        return this.stomach = [];
+    }
+    toString() {
+        return `My name is${this.name}, i'm ${this.age} old.`
+    }
 }
+
+
 
 /*
   TASK 2
@@ -59,6 +76,27 @@ class Person {
 */
 
 class Car {
+    constructor(model, milesPerGallon) {
+        this.model = model;
+        this.milesPerGallon = milesPerGallon;
+        this.tank = 0;
+        this.odometer = 0;
+
+    }
+    fill(gallons) {
+        this.tank = this.tank + gallons;
+    }
+    drive(distance) {
+        let milesDriven = this.tank * this.milesPerGallon;
+        if (distance < milesDriven) {
+            this.odometer = this.odometer + distance;
+            this.tank = this.tank - distance / this.milesPerGallon;
+        } else {
+            this.odometer = milesDriven + this.odometer;
+            this.tank = 0;
+            return `I ran out of fuel at ${this.odometer}`;
+        }
+    }
 
 }
 
@@ -145,12 +183,21 @@ class ProjectManager {
 ///////// END OF CHALLENGE /////////
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
-  module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
-  if (Instructor) { module.exports.Instructor = Instructor }
-  if (Student) { module.exports.Student = Student }
-  if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+    module.exports = module.exports || {}
+    if (Airplane) { module.exports.Airplane = Airplane }
+    if (Person) { module.exports.Person = Person }
+    if (Car) { module.exports.Car = Car }
+    if (Lambdasian) { module.exports.Lambdasian = Lambdasian }
+    if (Instructor) { module.exports.Instructor = Instructor }
+    if (Student) { module.exports.Student = Student }
+    if (ProjectManager) { module.exports.ProjectManager = ProjectManager }
+} else {
+    var results = results || {}
+    if (Airplane) { results.Airplane = Airplane }
+    if (Person) { results.Person = Person }
+    if (Car) { results.Car = Car }
+    if (Lambdasian) { results.Lambdasian = Lambdasian }
+    if (Instructor) { results.Instructor = Instructor }
+    if (Student) { results.Student = Student }
+    if (ProjectManager) { results.ProjectManager = ProjectManager }
 }
